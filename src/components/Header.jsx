@@ -4,7 +4,7 @@ import { FaPlus } from "react-icons/fa";
 
 const Header = () => {
   return (
-    <Flex justify="space-between" align="center">
+    <Flex justify="space-between" align="center" w="100%">
       <Heading as="h1" size="xl">
         MemeStream
       </Heading>
