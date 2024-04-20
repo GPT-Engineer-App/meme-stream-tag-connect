@@ -12,14 +12,14 @@ const UploadMeme = () => {
   return (
     <Container maxW="container.xl">
       <Header />
-      <FormControl>
+      <FormControl bg="white" p={4}>
         <FormLabel htmlFor="image-url">Image URL</FormLabel>
         <Input id="image-url" type="text" placeholder="Enter image URL" value={newMeme.imageUrl} onChange={(e) => setNewMeme({ ...newMeme, imageUrl: e.target.value })} />
         <FormLabel htmlFor="tags">Tags</FormLabel>
         <Input id="tags" type="text" placeholder="Enter tags separated by commas" value={newMeme.tags} onChange={(e) => setNewMeme({ ...newMeme, tags: e.target.value })} />
         <FormLabel htmlFor="description">Description</FormLabel>
-        <Textarea id="description" placeholder="Enter description" value={newMeme.description} onChange={(e) => setNewMeme({ ...newMeme, description: e.target.value })} />
-        <Button leftIcon={<FaUpload />} colorScheme="teal" onClick={handleUpload} mr={4}>
+        <Textarea id="description" placeholder="Enter description" value={newMeme.description} onChange={(e) => setNewMeme({ ...newMeme, description: e.target.value })} mb={4} />
+        <Button leftIcon={<FaUpload />} colorScheme="teal" onClick={handleUpload} mr={4} mt={0}>
           Upload Meme
         </Button>
         <Button as={Link} to="/" colorScheme="red">
