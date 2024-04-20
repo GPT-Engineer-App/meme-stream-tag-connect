@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import Header from "../components/Header";
 import { Box, Button, Container, FormControl, FormLabel, Heading, Input, Textarea } from "@chakra-ui/react";
 import { FaUpload } from "react-icons/fa";
 
@@ -10,9 +11,7 @@ const UploadMeme = () => {
 
   return (
     <Container maxW="container.xl">
-      <Heading as="h1" size="xl" textAlign="center">
-        Upload a New Meme
-      </Heading>
+      <Header />
       <FormControl>
         <FormLabel htmlFor="image-url">Image URL</FormLabel>
         <Input id="image-url" type="text" placeholder="Enter image URL" value={newMeme.imageUrl} onChange={(e) => setNewMeme({ ...newMeme, imageUrl: e.target.value })} />

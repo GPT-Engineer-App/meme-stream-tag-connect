@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import Header from "../components/Header";
 import { Box, Button, Container, Flex, FormControl, FormLabel, Heading, IconButton, Image, Input, Stack, Tag, Text, Textarea, VStack, Wrap, WrapItem } from "@chakra-ui/react";
 import { FaPlus, FaThumbsUp, FaThumbsDown, FaComment, FaUpload } from "react-icons/fa";
 
@@ -44,14 +44,7 @@ const Index = () => {
   return (
     <Container maxW="container.xl">
       <VStack spacing={8}>
-        <Flex justify="space-between" align="center">
-          <Heading as="h1" size="xl">
-            MemeStream
-          </Heading>
-          <Button as={Link} to="/upload" colorScheme="teal" leftIcon={<FaPlus />}>
-            Add Meme
-          </Button>
-        </Flex>
+        <Header />
         <FormControl>
           <FormLabel htmlFor="image-url">Image URL</FormLabel>
           <Input id="image-url" type="text" placeholder="Enter image URL" value={newMeme.imageUrl} onChange={(e) => setNewMeme({ ...newMeme, imageUrl: e.target.value })} />
