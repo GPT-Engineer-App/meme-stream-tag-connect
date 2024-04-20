@@ -74,7 +74,7 @@ const Index = () => {
               </WrapItem>
             ))
           ) : (
-            <Text>
+            <Text color="white">
               No memes.{" "}
               <Link to="/upload" color="teal.500">
                 Want to add one?
