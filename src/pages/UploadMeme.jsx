@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import { Box, Button, Container, FormControl, FormLabel, Heading, Input, Textarea } from "@chakra-ui/react";
 import { FaUpload } from "react-icons/fa";
 
@@ -19,8 +20,11 @@ const UploadMeme = () => {
         <Input id="tags" type="text" placeholder="Enter tags separated by commas" value={newMeme.tags} onChange={(e) => setNewMeme({ ...newMeme, tags: e.target.value })} />
         <FormLabel htmlFor="description">Description</FormLabel>
         <Textarea id="description" placeholder="Enter description" value={newMeme.description} onChange={(e) => setNewMeme({ ...newMeme, description: e.target.value })} />
-        <Button leftIcon={<FaUpload />} colorScheme="teal" onClick={handleUpload}>
+        <Button leftIcon={<FaUpload />} colorScheme="teal" onClick={handleUpload} mr={4}>
           Upload Meme
+        </Button>
+        <Button as={Link} to="/" colorScheme="red">
+          Cancel
         </Button>
       </FormControl>
     </Container>
