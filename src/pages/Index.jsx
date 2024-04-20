@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import Header from "../components/Header";
 import { Box, Button, Container, Flex, FormControl, FormLabel, Heading, IconButton, Image, Input, Stack, Tag, Text, Textarea, VStack, Wrap, WrapItem } from "@chakra-ui/react";
 import { FaPlus, FaThumbsUp, FaThumbsDown, FaComment, FaUpload } from "react-icons/fa";
@@ -45,42 +46,41 @@ const Index = () => {
     <Container maxW="container.xl">
       <VStack spacing={8}>
         <Header />
-        <FormControl>
-          <FormLabel htmlFor="image-url">Image URL</FormLabel>
-          <Input id="image-url" type="text" placeholder="Enter image URL" value={newMeme.imageUrl} onChange={(e) => setNewMeme({ ...newMeme, imageUrl: e.target.value })} />
-          <FormLabel htmlFor="tags">Tags</FormLabel>
-          <Input id="tags" type="text" placeholder="Enter tags separated by commas" value={newMeme.tags} onChange={(e) => setNewMeme({ ...newMeme, tags: e.target.value })} />
-          <FormLabel htmlFor="description">Description</FormLabel>
-          <Textarea id="description" placeholder="Enter description" value={newMeme.description} onChange={(e) => setNewMeme({ ...newMeme, description: e.target.value })} />
-          <Button leftIcon={<FaUpload />} colorScheme="teal" onClick={handleUpload}>
-            Upload Meme
-          </Button>
-        </FormControl>
+
         <Wrap spacing={4} justify="center">
-          {memes.map((meme) => (
-            <WrapItem key={meme.id} p={4} boxShadow="md" rounded="md">
-              <VStack>
-                <Image src={meme.imageUrl} alt={`Meme ${meme.id}`} boxSize="300px" objectFit="cover" />
-                <Text>{meme.description}</Text>
-                <Wrap>
-                  {meme.tags.map((tag) => (
-                    <WrapItem key={tag}>
-                      <Tag size="lg" variant="solid" colorScheme="blue">
-                        {tag}
-                      </Tag>
-                    </WrapItem>
-                  ))}
-                </Wrap>
-                <Flex align="center">
-                  <IconButton icon={<FaThumbsUp />} onClick={() => handleLike(meme.id)} aria-label="Like" />
-                  <Text mx={2}>{meme.likes}</Text>
-                  <IconButton icon={<FaThumbsDown />} onClick={() => handleDislike(meme.id)} aria-label="Dislike" />
-                  <Text mx={2}>{meme.dislikes}</Text>
-                  <IconButton icon={<FaComment />} aria-label="Comment" />
-                </Flex>
-              </VStack>
-            </WrapItem>
-          ))}
+          {memes.length > 0 ? (
+            memes.map((meme) => (
+              <WrapItem key={meme.id} p={4} boxShadow="md" rounded="md">
+                <VStack>
+                  <Image src={meme.imageUrl} alt={`Meme ${meme.id}`} boxSize="300px" objectFit="cover" />
+                  <Text>{meme.description}</Text>
+                  <Wrap>
+                    {meme.tags.map((tag) => (
+                      <WrapItem key={tag}>
+                        <Tag size="lg" variant="solid" colorScheme="blue">
+                          {tag}
+                        </Tag>
+                      </WrapItem>
+                    ))}
+                  </Wrap>
+                  <Flex align="center">
+                    <IconButton icon={<FaThumbsUp />} onClick={() => handleLike(meme.id)} aria-label="Like" />
+                    <Text mx={2}>{meme.likes}</Text>
+                    <IconButton icon={<FaThumbsDown />} onClick={() => handleDislike(meme.id)} aria-label="Dislike" />
+                    <Text mx={2}>{meme.dislikes}</Text>
+                    <IconButton icon={<FaComment />} aria-label="Comment" />
+                  </Flex>
+                </VStack>
+              </WrapItem>
+            ))
+          ) : (
+            <Text>
+              No memes.{" "}
+              <Link to="/upload" color="teal.500">
+                Want to add one?
+              </Link>
+            </Text>
+          )}
         </Wrap>
       </VStack>
     </Container>
